@@ -5,9 +5,12 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest --passWithNoTests",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "type-check": "tsc --noEmit",
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "build:ios": "cd ios && xcodebuild -workspace MyApp.xcworkspace -scheme MyApp -configuration Release"
   },
   "dependencies": {
     "react": "18.3.1",
