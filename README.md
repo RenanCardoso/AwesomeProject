@@ -301,7 +301,7 @@ jobs:
 
 ## 📱 Passo 4 — Acesso dos testadores  
 
-📌 Certifique-se de que os usuários de teste que receberam o aplicativo pelo Firebase estejam devidamente criados antes de iniciar o primeiro build da pipeline. [Clique aqui para ver o guia de como criar usuários de teste no Firebase App Distribution.](./docs/CRIAR_USUARIOS_DE_TESTE_FIREBASE_APP_DISTRIBUTION.md)
+📌 Certifique-se de criar pelo menos um grupo de testador e que os usuários de teste que receberam o aplicativo pelo Firebase estejam devidamente criados e vinculados a este grupo antes de iniciar o primeiro build da pipeline. [Clique aqui para ver o guia de como criar grupo de testadores e usuários de teste no Firebase App Distribution.](./docs/CRIAR_USUARIOS_DE_TESTE_FIREBASE_APP_DISTRIBUTION.md)
 
 1. O testador recebe um e-mail com o convite do Firebase.  
 2. Ele aceita o convite e faz login com uma conta Google.  

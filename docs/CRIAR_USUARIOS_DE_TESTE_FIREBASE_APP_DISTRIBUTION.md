@@ -1,4 +1,4 @@
-# 📲 Como criar usuários de teste no Firebase App Distribution  
+# 📲 Como criar grupo de testadores e usuários de teste no Firebase App Distribution  
 
 Este guia explica **como adicionar testadores** no **Firebase App Distribution** — o serviço do Firebase que permite distribuir **builds de preview** do seu app (Android e iOS) para testadores com apenas um link.  
 
@@ -26,12 +26,13 @@ Antes de criar os testadores, garanta que você:
 
 Você pode adicionar testadores de **duas formas**: manualmente pela interface ou via **Firebase CLI**.  
 
-### 🖱️ Método 1 — Via Console (manual)
+### 🖱️ Método 1 — Via interface (manual)
 
-1. Dentro do painel **App Distribution**, clique em **“Adicionar testadores”**.  
-2. Informe um ou mais e-mails, separados por vírgula.  
-3. (Opcional) Crie **grupos** (ex: QA, Devs, Stakeholders).  
-4. Clique em **“Adicionar testadores”**.  
+1. Dentro do painel **App Distribution**, clique em **“Testadores e grupos”**.  
+2. Dentro da seção  **“Testadores e grupos”**, clique em **“Adicionar grupo”**.  
+3. Informe o nome do grupo (ex: QA, Devs, Stakeholders) e clique em **“Salvar”**.  
+4. Clique em **“Adicionar um testador”**.  
+5. Informe o e-mail do testador e clique em **“Adicionar um testador”**.  
 
 Os testadores receberão um **convite por e-mail** para acessar o app.  
 Eles precisarão aceitar o convite e **entrar com uma conta Google**.  
