@@ -7,16 +7,17 @@ Este projeto foi criado com [**React Native**](https://reactnative.dev) via [`@r
 ## 🧭 Índice
 
 1. [Iniciando o projeto](#-iniciando-o-projeto)
-2. [Executando o app](#-executando-o-app)
+2. [Executando o app](#2-executando-o-app)
 3. [Modificando o app](#-modificando-o-app)
-4. [CI/CD com GitHub Actions](#-cicd-com-github-actions)
+4. [CI/CD com GitHub Actions](#️-cicd-com-github-actions)
    - [Pré-requisitos](#-pré-requisitos)
    - [Configuração do Firebase](#-configuração-do-firebase)
    - [Configurando o Keystore (Android)](#-configurando-o-keystore-android)
    - [Criando os Secrets no GitHub](#-criando-os-secrets-no-github)
-   - [Workflow de validação (PR Check)](#passo-1--workflow-de-validação-em-pr)
-   - [Build de Preview Android](#passo-2--build-de-preview-automático-para-android)
-   - [Build de Preview iOS](#passo-3--build-de-preview-automático-para-ios)
+   - [Workflow de validação (PR Check)](#-passo-1--workflow-de-validação-em-pr)
+   - [Build de Preview Android](#-passo-2--build-de-preview-automatizado-para-android)
+   - [Build de Preview iOS](#-passo-3--build-de-preview-automatizado-para-ios)
+   - [Acesso dos testadores](#-passo-4--acesso-dos-testadores)
 5. [Recursos úteis](#-recursos-úteis)
 
 ---
@@ -67,7 +68,7 @@ Para recarregar:
 
 ## ⚙️ CI/CD com GitHub Actions
 
-Com este guia, você vai configurar **builds automáticos**, **testes de qualidade** e **distribuição via Firebase App Distribution**, tudo dentro do GitHub.
+Com este guia, você vai configurar **builds automatizados**, **testes de qualidade** e **distribuição via Firebase App Distribution**, tudo dentro do GitHub.
 
 ---
 
@@ -202,7 +203,7 @@ jobs:
 
 ---
 
-## 📦 Passo 2 — Build de Preview automático para Android
+## 📦 Passo 2 — Build de Preview automatizado para Android
 
 Crie `.github/workflows/preview-android.yml`:
 
@@ -261,7 +262,7 @@ jobs:
 
 ---
 
-## 🍏 Passo 3 — Build de Preview automático para iOS
+## 🍏 Passo 3 — Build de Preview automatizado para iOS
 
 > 💻 Requer runner **macOS** (plano pago do GitHub ou self-hosted).
 
@@ -296,11 +297,11 @@ jobs:
           file: ios/build/MyApp.ipa
 ```
 
-📌 Certifique-se de que os usuários de teste que receberam o aplicativo pelo Firebase estejam devidamente criados antes de iniciar o primeiro build da pipeline. [Clique aqui para ver o guia de como criar usuários de teste no Firebase App Distribution.](./docs/CRIAR_USUARIOS_DE_TESTE_FIREBASE_APP_DISTRIBUTION.md)
-
 ---
 
 ## 📱 Passo 4 — Acesso dos testadores  
+
+📌 Certifique-se de que os usuários de teste que receberam o aplicativo pelo Firebase estejam devidamente criados antes de iniciar o primeiro build da pipeline. [Clique aqui para ver o guia de como criar usuários de teste no Firebase App Distribution.](./docs/CRIAR_USUARIOS_DE_TESTE_FIREBASE_APP_DISTRIBUTION.md)
 
 1. O testador recebe um e-mail com o convite do Firebase.  
 2. Ele aceita o convite e faz login com uma conta Google.  
@@ -325,7 +326,7 @@ jobs:
 ## 🎉 Conclusão
 
 Você agora tem uma pipeline completa de **CI/CD gratuita** para React Native:
-- PRs passam por testes automáticos ✅  
+- PRs passam por testes automatizados ✅  
 - Builds de preview são geradas e enviadas direto ao Firebase 📲  
 - Equipes podem testar novas versões rapidamente 🚀  
 
