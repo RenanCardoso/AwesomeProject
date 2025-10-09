@@ -1,0 +1,65 @@
+name: Preview iOS
+on:
+  workflow_run:
+    workflows: ["PR Check"]
+    types: [completed]
+
+jobs:
+  build-preview-ios:
+    runs-on: macos-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'master' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "yarn"
+
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+
+      # Instala bundler (caso use fastlane)
+      - name: Install bundler
+        run: gem install bundler
+
+      # Importa certificados e perfis de provisionamento
+      - name: Import signing certificate
+        uses: apple-actions/import-codesign-certs@v2
+        with:
+          p12-file-base64: ${{ secrets.APPLE_P12_BASE64 }}
+          p12-password: ${{ secrets.APPLE_P12_PASSWORD }}
+          mobileprovision-base64: ${{ secrets.APPLE_PROVISION_PROFILE_BASE64 }}
+
+      # Instala dependências iOS
+      - name: Install pods
+        run: |
+          cd ios
+          pod install --repo-update
+
+      # Build IPA com xcodebuild
+      - name: Build iOS Release
+        run: |
+          cd ios
+          xcodebuild \
+            -workspace MyApp.xcworkspace \
+            -scheme MyApp \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath build/MyApp.xcarchive archive
+
+          xcodebuild \
+            -exportArchive \
+            -archivePath build/MyApp.xcarchive \
+            -exportOptionsPlist ExportOptions.plist \
+            -exportPath build/
+
+      # Upload para Firebase
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+          groups: testers
+          file: ios/build/MyApp.ipa
