@@ -84,33 +84,6 @@ Crie o secret `ANDROID_KEYSTORE_BASE64` com o conteúdo base64.
 
 ---
 
-## ⚙️ Workflow de validação (PR Check)
-
-Arquivo: `.github/workflows/pr-check.yml`
-```yaml
-name: PR Check
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  quality:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run type-check
-      - run: npm run test --ci --coverage
-```
-
----
-
 ## 📦 Workflow de build e distribuição
 
 Arquivo: `.github/workflows/preview-android.yml`
